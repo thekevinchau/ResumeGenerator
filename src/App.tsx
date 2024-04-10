@@ -1,9 +1,10 @@
+import { InputFields } from "./components/InputFields";
+
+
 
 
 export default function App() {
-  return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+  return <div className="w-screen h-screen flex flex-col justify-center items-start bg-slate-500">
+   <InputFields></InputFields>
+  </div>
 }
