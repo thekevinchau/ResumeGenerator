@@ -26,16 +26,16 @@ export default function EducationForms({handleInput, educationInfo, handleSubmis
 
     return <form className="flex flex-col" onSubmit={handleButtonClick}>
         <label>Degree</label>
-        <input name="degree" value={educationInfo.degree} onChange={handleInput}></input>
+        <input name="degree" value={educationInfo.degree} onChange={handleInput} required></input>
 
         <label>College</label>
-        <input name="college" value={educationInfo.college} onChange={handleInput}></input>
+        <input name="college" value={educationInfo.college} onChange={handleInput} required></input>
 
         <label>Expected Graduation</label>
-        <input name="expectedGrad" value={educationInfo.expectedGrad} onChange={handleInput}></input>
+        <input name="expectedGrad" value={educationInfo.expectedGrad} onChange={handleInput} required></input>
 
         <label>School Location</label>
-        <input name="location" value={educationInfo.location} onChange={handleInput}></input>
+        <input name="location" value={educationInfo.location} onChange={handleInput} required></input>
 
         <label>GPA</label>
         <input name="gpa" value={educationInfo.gpa} onChange={handleInput}></input>

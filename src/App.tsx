@@ -4,6 +4,16 @@ import { HeaderForms } from "./components/HeaderForms";
 import { EducationSection } from "./components/EducationSection";
 import EducationForms from "./components/EducationForms";
 
+interface EducationInfo {
+  degree: string;
+  college: string;
+  expectedGrad: string;
+  location: string;
+  gpa: number;
+  recognitions: string[];
+  courseWork: string;
+}
+
 export default function App() {
   const [personalInfo, setPersonalInfo] = useState(
     {
@@ -11,7 +21,7 @@ export default function App() {
     state: "", 
     city: "", 
     email: "", 
-    number: ""
+    number: "",
   });
   /*
   @brief: A callback function that changes personalInfo state values based on input from HeaderForm.tsx
@@ -33,15 +43,14 @@ export default function App() {
     recognitions: ['Dean’s List: Fall 2021, Spring 2022, Fall 2022, Spring 2023, Fall 2023', 'UD Presidential Scholarship'], 
     courseWork: ''
   })
-  const [educationArray, setEducationArray] = useState<object[]>([]);
 
+  const [educationArray, setEducationArray] = useState<EducationInfo[]>([]);
   const addEducation = () => {
     //empty out the educationInfo upon submission
-    const resetSubmission = {degree: "", college: "", expectedGrad: "", location: "", gpa: 0.0, recognitions: ['Dean’s List: Fall 2021, Spring 2022, Fall 2022, Spring 2023, Fall 2023', 'UD Presidential Scholarship'], courseWork: ''}
+    //const resetSubmission = {degree: "", college: "", expectedGrad: "", location: "", gpa: 0.0, recognitions: ['Dean’s List: Fall 2021, Spring 2022, Fall 2022, Spring 2023, Fall 2023', 'UD Presidential Scholarship'], courseWork: ''}
     setEducationArray([...educationArray, educationInfo])
-    console.log(educationArray);
-    setEducationInfo(resetSubmission);
   }
+  console.log(educationArray);
   /*
   @brief: A callback function that changes educationInfo fields based on input from EducationForm.tsx
   @param: Event that fires upon key inputs to input box
@@ -64,7 +73,11 @@ export default function App() {
 
       <div className="ml-10 mr-10">
         <HeaderSection name={personalInfo.name} state={personalInfo.state} city={personalInfo.city} email={personalInfo.email} number={personalInfo.number}></HeaderSection>
-        <EducationSection educationInfo={educationInfo}></EducationSection>
+        <p className="text-center">Education</p>
+        <hr></hr>
+        {educationArray.map((education: EducationInfo, index: number) => <EducationSection key={index} educationInfo={education}></EducationSection>)}
+        <p className="text-center">Experience</p>
+        <hr></hr>
       </div>
     </div>
   </div>
