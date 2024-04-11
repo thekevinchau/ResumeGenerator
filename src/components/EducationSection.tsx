@@ -9,7 +9,7 @@ interface EducationProps{
 }
 
 export function EducationSection({degree, college, expectedGrad, location, gpa, recognitions, coursework }: EducationProps){
-    return <div className="ml-8 mr-8 font-serif text-[0.75rem]">
+    return <div className="font-serif text-[0.75rem]">
         <p className="text-center font-bold">Education</p>
         <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700"></hr>
 
@@ -18,7 +18,7 @@ export function EducationSection({degree, college, expectedGrad, location, gpa, 
             <b>{location}</b>
         </div>
         <div className="flex justify-between">
-            <span>{degree}</span>
+            <span className="italic">{degree}</span>
             <span>{expectedGrad}</span>
         </div>
         <b className="text-[0.75rem]">Cumulative GPA: {gpa}</b>
