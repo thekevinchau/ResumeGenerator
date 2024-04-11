@@ -11,8 +11,8 @@ interface HeaderFormsProps{
 
 
 export function HeaderForms({handleFormInput, headerInfo}: HeaderFormsProps){
-    return <div>
-        <form>
+    return <div className="flex flex-col">
+        <form className="flex flex-col">
             <label>Full Name</label>
             <input type="text"name="name" onChange={handleFormInput} value={headerInfo.name}></input>
 

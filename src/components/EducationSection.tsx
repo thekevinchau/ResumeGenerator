@@ -1,32 +1,36 @@
 interface EducationProps{
-    degree: string,
-    college: string,
-    expectedGrad: string,
-    location: string
-    gpa: number,
-    recognitions: string[],
-    coursework: string,
+    educationInfo: {
+        degree: string,
+        college: string,
+        expectedGrad: string,
+        location: string
+        gpa: number,
+        recognitions: string[],
+        courseWork: string,
+        id: 1,
+    }
+
 }
 
-export function EducationSection({degree, college, expectedGrad, location, gpa, recognitions, coursework }: EducationProps){
+export function EducationSection({educationInfo}: EducationProps){
     return <div className="font-serif text-[0.75rem]">
         <p className="text-center font-bold">Education</p>
         <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700"></hr>
 
         <div className="flex justify-between">
-            <b>{college}</b>
-            <b>{location}</b>
+            <b>{educationInfo.college}</b>
+            <b>{educationInfo.location}</b>
         </div>
         <div className="flex justify-between">
-            <span className="italic">{degree}</span>
-            <span>{expectedGrad}</span>
+            <span className="italic">{educationInfo.degree}</span>
+            <span>{educationInfo.expectedGrad}</span>
         </div>
-        <b className="text-[0.75rem]">Cumulative GPA: {gpa}</b>
+        <b className="text-[0.75rem]">Cumulative GPA: {educationInfo.gpa}</b>
         
         <div className="ml-8 text-[0.75rem]">
-            {recognitions.map((award: string) => <li>{award}</li>)}
+            {educationInfo.recognitions.map((award: string) => <li key={educationInfo.id}>{award}</li>)}
         </div>
-        <b>Relevant Coursework: </b>{coursework}
+        <b>Relevant Coursework: </b>{educationInfo.courseWork}
         
 
 
