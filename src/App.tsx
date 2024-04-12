@@ -77,6 +77,12 @@ export default function App() {
     title: "Customer Service Associate",
     startDate: "March 2023",
     endDate: "",
+    tasks: [
+      "Provided exceptional customer service by assisting with inquiries, resolving issues, and ensuring customer satisfaction.",
+      "Maintained comprehensive knowledge of CVS Health products and services to educate customers and promote offerings.",
+      "Efficiently processed transactions, handled cash, credit, and debit payments, and ensured compliance with cash handling policies.",
+      "Collaborated with team members, handled multiple tasks simultaneously, and maintained a clean and safe store environment to enhance customer experience."
+    ],
     currentEmployee: true,
   })
   
