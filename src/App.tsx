@@ -4,6 +4,7 @@ import { HeaderForms } from "./components/HeaderForms";
 import { EducationSection } from "./components/EducationSection";
 import EducationForms from "./components/EducationForms";
 import { ExperienceSection } from "./components/ExperienceSection";
+import { ExperienceForms } from "./components/ExperienceForms";
 
 interface EducationInfo {
   degree: string;
@@ -13,6 +14,16 @@ interface EducationInfo {
   gpa: number;
   recognitions: string[];
   courseWork: string;
+}
+
+export interface ExperienceInfo {
+  company: string,
+  location: string,
+  title: string,
+  startDate: string,
+  endDate: string,
+  tasks: string[],
+  currentEmployee: boolean,
 }
 
 export default function App() {
@@ -60,6 +71,7 @@ export default function App() {
     setEducationArray([...educationArray, educationInfo])
     setEducationInfo(resetSubmission);
   }
+
   /*
   @brief: A callback function that changes educationInfo fields based on input from EducationForm.tsx
   @param: Event that fires upon key inputs to input box
@@ -85,13 +97,23 @@ export default function App() {
     ],
     currentEmployee: true,
   })
+
+  const handleExperienceInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //destructure the name and value from the event and we'll update those accordingly
+    const { name, value } = event.target;
+    setExperience({...experience, [name]: value})
+  }
+
+  //TODO: Complete functionality to add to Experience Array
+  //const [experienceArray, setExperienceArray] = useState<ExperienceInfo[]>([]);
   
 
   return <div className="w-screen h-screen flex justify-around items-start bg-slate-500 font-serif">
 
-    <div className="w-1/2 h-1/2 flex flex-col border">
+    <div className="w-1/2 h-screen flex flex-col border overflow-scroll">
       <HeaderForms handleFormInput={handlePersonalInfoChange} headerInfo={personalInfo}></HeaderForms>
       <EducationForms handleSubmission={addEducation} handleInput={handleEducationInfo} educationInfo={educationInfo}></EducationForms>
+      <ExperienceForms handleInput={handleExperienceInput} experienceInfo={experience}></ExperienceForms>
     </div>
     <div className="flex flex-col w-1/2 h-full  border bg-white">
 
