@@ -26,25 +26,25 @@ export default function EducationForms({handleInput, educationInfo, handleSubmis
 
     return <form className="flex flex-col" onSubmit={handleButtonClick}>
         <label>Degree</label>
-        <input name="degree" value={educationInfo.degree} onChange={handleInput} required></input>
+        <input name="degree" value={educationInfo.degree} onChange={handleInput} required placeholder="High School Degree, College Degree, GED, etc."></input>
 
-        <label>College</label>
-        <input name="college" value={educationInfo.college} onChange={handleInput} required></input>
+        <label>Institute Name</label>
+        <input name="college" value={educationInfo.college} onChange={handleInput} required placeholder="ie. University of Delaware, Concord High School"></input>
 
         <label>Expected Graduation</label>
-        <input name="expectedGrad" value={educationInfo.expectedGrad} onChange={handleInput} required></input>
+        <input name="expectedGrad" value={educationInfo.expectedGrad} onChange={handleInput} required placeholder="Graduation or Expected Graduation Date"></input>
 
         <label>School Location</label>
-        <input name="location" value={educationInfo.location} onChange={handleInput} required></input>
+        <input name="location" value={educationInfo.location} onChange={handleInput} required placeholder="ie. Philadelphia, PA"></input>
 
         <label>GPA</label>
-        <input name="gpa" value={educationInfo.gpa} onChange={handleInput}></input>
+        <input name="gpa" value={educationInfo.gpa} onChange={handleInput} placeholder="ie. 3.95"></input>
 
         <label>Recognitions/Awards</label>
         <input name="recognitions" value={educationInfo.recognitions} onChange={handleInput}></input>
 
         <label>Coursework (Enter as comma separated)</label>
-        <input name="courseWork" value={educationInfo.courseWork} onChange={handleInput}></input>
+        <input name="courseWork" value={educationInfo.courseWork} onChange={handleInput} placeholder="Enter coursework separated by commas"></input>
         <button type="submit">Button</button>
 
 

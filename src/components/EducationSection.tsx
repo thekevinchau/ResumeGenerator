@@ -7,7 +7,8 @@ interface EducationProps{
         gpa: number,
         recognitions: string[],
         courseWork: string,
-    }
+    },
+    key: number,
 
 }
 
@@ -26,7 +27,7 @@ export function EducationSection({educationInfo}: EducationProps){
         <div className="ml-8 text-[0.75rem]">
             {educationInfo.recognitions.map((award: string) => <li>{award}</li>)}
         </div>
-        <b>Relevant Coursework: </b>{educationInfo.courseWork}
+        {educationInfo.courseWork !== "" && <span><b>Relevant Coursework: </b>{educationInfo.courseWork}</span>}
         
 
 
