@@ -98,6 +98,12 @@ export default function App() {
     currentEmployee: true,
   })
 
+  /*
+  @brief: A callback function that changes ExperienceInfo text fields based on input from ExperienceForms.tsx inputs
+  @param: Event that fires upon key inputs to input box
+  @functionality: Consumes an event and destructures the name and value from the event and we'll update those accordingly.
+  @return: Returns nothing. Is a state setter.
+  */
   const handleExperienceInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     //destructure the name and value from the event and we'll update those accordingly
     const { name, value } = event.target;
@@ -105,7 +111,11 @@ export default function App() {
   }
 
   //TODO: Complete functionality to add to Experience Array
-  //const [experienceArray, setExperienceArray] = useState<ExperienceInfo[]>([]);
+  const [experienceArray, setExperienceArray] = useState<ExperienceInfo[]>([]);
+
+  const addExperience = () => {
+    setExperienceArray([...experienceArray, experience])
+  }
   
 
   return <div className="w-screen h-screen flex justify-around items-start bg-slate-500 font-serif">
@@ -113,7 +123,7 @@ export default function App() {
     <div className="w-1/2 h-screen flex flex-col border overflow-scroll">
       <HeaderForms handleFormInput={handlePersonalInfoChange} headerInfo={personalInfo}></HeaderForms>
       <EducationForms handleSubmission={addEducation} handleInput={handleEducationInfo} educationInfo={educationInfo}></EducationForms>
-      <ExperienceForms handleInput={handleExperienceInput} experienceInfo={experience}></ExperienceForms>
+      <ExperienceForms handleSubmission={addExperience} handleInput={handleExperienceInput} experienceInfo={experience}></ExperienceForms>
     </div>
     <div className="flex flex-col w-1/2 h-full  border bg-white">
 
@@ -128,7 +138,7 @@ export default function App() {
         <p className="text-center mb-2">Experience</p>
         <hr className="h-px mb-2 bg-gray-200 border-0 dark:bg-gray-700"></hr>
 
-        <ExperienceSection experienceInfo={experience}></ExperienceSection>
+        {experienceArray.map((experience: ExperienceInfo, index: number) => <ExperienceSection key={index} experienceInfo={experience}></ExperienceSection>)}
       </div>
     </div>
   </div>
