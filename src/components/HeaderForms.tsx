@@ -1,32 +1,26 @@
-interface HeaderFormsProps{
-    handleFormInput: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    headerInfo: {
+
+interface HeaderProps {
+    HeaderInfo: {
         name: string,
+        email: string,
+        cell: string,
         city: string,
         state: string,
-        email: string,
-        number: string,
-    },
+    }
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-
-export function HeaderForms({handleFormInput, headerInfo}: HeaderFormsProps){
-    return <div className="flex flex-col">
-        <form className="flex flex-col">
-            <label>Full Name</label>
-            <input type="text"name="name" onChange={handleFormInput} value={headerInfo.name} required placeholder="ex. John Doe"></input>
-
-            <label>City</label>
-            <input type="text"name="city" onChange={handleFormInput} value={headerInfo.city} required placeholder="ex. Philadelphia"></input>
-
-            <label>State</label>
-            <input type="text"name="state" onChange={handleFormInput} value={headerInfo.state} required placeholder="ex. Pennsylvania"></input>
-
-            <label>Email</label>
-            <input type="text"name="email" onChange={handleFormInput} value={headerInfo.email} required placeholder="ex. JohnDoe@gmail.com"></input>
-
-            <label>Number</label>
-            <input type="text"name="number" onChange={handleFormInput} value={headerInfo.number} required placeholder="ex. 555-555-5555"></input>
-        </form>
+export default function HeaderForms ({HeaderInfo, handleChange}: HeaderProps): JSX.Element {
+    return <div className="flex flex-col w-11/12">
+        <label>Full Name</label>
+        <input type="text" name="name" value={HeaderInfo.name} placeholder="ie. Kevin Chau " onChange={handleChange}></input>
+        <label>Email:</label>
+        <input type="text" name="email" value={HeaderInfo.email} placeholder="ie. kevin.chau613@gmail.com" onChange={handleChange}></input>
+        <label>Cellphone</label>
+        <input type="text" name="cell" value={HeaderInfo.cell} placeholder="ie. 555-555-5555" onChange={handleChange}></input>
+        <label>City</label>
+        <input type="text" name="city" value={HeaderInfo.city} placeholder="ie. Philadelphia" onChange={handleChange}></input>
+        <label>State</label>
+        <input type="text" name="state" value={HeaderInfo.state} placeholder="ie. Pennsylvania" onChange={handleChange}></input>
     </div>
 }
