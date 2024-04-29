@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export default function HeaderSection({HeaderInfo}: HeaderProps):JSX.Element {
     return (<div>
-        <h1>{HeaderInfo.name}</h1>
+        <h1 className="">{HeaderInfo.name}</h1>
         <span>{HeaderInfo.email} {HeaderInfo.cell}</span>
     </div>)
 }
