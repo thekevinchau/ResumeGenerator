@@ -1,2 +1,0 @@
-
-<EducationSection coursework={educationInfo.courseWork} recognitions= {educationInfo.recognitions} gpa={educationInfo.gpa} degree={educationInfo.degree} college={educationInfo.college} location={educationInfo.location} expectedGrad={educationInfo.graduationDate}></EducationSection>

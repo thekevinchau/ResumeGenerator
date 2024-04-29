@@ -7,6 +7,8 @@ interface EducationProps {
         gpa: number,
         awards: string[],
         coursework: string,
+        location: string,
+        expectedGrad: string,
     }
     handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
     addEducation: () => void;
@@ -27,8 +29,12 @@ export default function EducationForms({EducationInfo, handleFormChange, addEduc
     return <div className="flex flex-col">
         <label>School</label>
         <input onChange={handleFormChange} name="school" value={EducationInfo.school}></input>
+        <label>School Location</label>
+        <input onChange={handleFormChange} name="location" value={EducationInfo.location}></input>
         <label>Degree</label>
         <input onChange={handleFormChange} name="degree" value={EducationInfo.degree}></input>
+        <label>Expected Graduation</label>
+        <input onChange={handleFormChange} name="expectedGrad" value={EducationInfo.expectedGrad}></input>
         <label>GPA</label>
         <input onChange={handleFormChange} name="gpa" value={EducationInfo.gpa}></input>
         <label>Awards</label>
