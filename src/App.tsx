@@ -97,7 +97,7 @@ export default function App() {
 
   
 
-    <div className="border w-1/2 h-screen bg-white flex flex-col items-center justify-between">
+    <div className="border w-1/2 h-screen bg-white flex flex-col items-center justify-between shadow-md">
     <HeaderSection HeaderInfo={headerInfo}></HeaderSection>
     {educationArray.map(education => <EducationSection EducationInfo={education}></EducationSection>)}
     </div>

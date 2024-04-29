@@ -9,8 +9,16 @@ interface HeaderProps {
 }
 
 export default function HeaderSection({HeaderInfo}: HeaderProps):JSX.Element {
-    return (<div>
-        <h1 className="">{HeaderInfo.name}</h1>
-        <span>{HeaderInfo.email} {HeaderInfo.cell}</span>
+    return (<div className="flex flex-col justify-center items-center mt-10 text-xs">
+        <h1 className="font-bold size text-2xl">{HeaderInfo.name}</h1>
+        <span className="mt-1">
+            <b>Email: </b>{HeaderInfo.email} <b>Cell: </b>{HeaderInfo.cell}
+        </span>
+
+        <span className="mt-1">
+            {HeaderInfo.city}, {HeaderInfo.state}
+        </span>
+
+        <span></span>
     </div>)
 }
