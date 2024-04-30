@@ -33,7 +33,14 @@ export default function ExperienceSection ({ExperienceInfo}: ExperienceProps): J
 
         <span className="flex justify-between">
             <p className="italic">{ExperienceInfo.position}</p>
-            <p>{startMonth} {startYear} - {endMonth} {endYear}</p>
+            <p>
+                {ExperienceInfo.startMonth !== "" && <span>{startMonth} {startYear} - </span>} 
+                {ExperienceInfo.endMonth !== "" && <span>{endMonth} {endYear}</span>}
+                </p>
         </span>
+
+        <div className="mt-1">
+            {ExperienceInfo.tasks.map((task: string) => <li className="ml-5">{task}</li>)}
+        </div>
     </div>
 }

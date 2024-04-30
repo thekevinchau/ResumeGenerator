@@ -28,21 +28,21 @@ export default function EducationForms({EducationInfo, handleFormChange, addEduc
 
     return <div className="flex flex-col bg-orange-200">
         <label>School</label>
-        <input onChange={handleFormChange} name="school" value={EducationInfo.school}></input>
+        <input onChange={handleFormChange} name="school" value={EducationInfo.school} required></input>
         <label>School Location</label>
-        <input onChange={handleFormChange} name="location" value={EducationInfo.location}></input>
+        <input onChange={handleFormChange} name="location" value={EducationInfo.location} required></input>
         <label>Degree</label>
-        <input onChange={handleFormChange} name="degree" value={EducationInfo.degree}></input>
+        <input onChange={handleFormChange} name="degree" value={EducationInfo.degree} required></input>
         <label>Expected Graduation</label>
-        <input onChange={handleFormChange} name="expectedGrad" value={EducationInfo.expectedGrad}></input>
+        <input onChange={handleFormChange} name="expectedGrad" value={EducationInfo.expectedGrad} required></input>
         <label>GPA</label>
-        <input onChange={handleFormChange} name="gpa" value={EducationInfo.gpa}></input>
+        <input onChange={handleFormChange} name="gpa" value={EducationInfo.gpa} required></input>
         <label>Awards</label>
         {EducationInfo.awards.map((award: string) => <li>{award}</li>)}
-        <input onChange={handleAwardInput} value={awardInput}></input>
-        <button onClick={addAward}>Add Award</button>
+        <input onChange={handleAwardInput} value={awardInput} required></input>
+        <button onClick={addAward} disabled={awardInput === ""}>Add Award</button>
         <label>Coursework</label>
-        <input onChange={handleFormChange} name="coursework" value={EducationInfo.coursework}></input>
+        <input onChange={handleFormChange} name="coursework" value={EducationInfo.coursework} required></input>
         <button onClick={addEducation}>Submit Education</button>
     </div>
 }

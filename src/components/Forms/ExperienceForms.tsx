@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 interface ExperienceProps{
     ExperienceInfo: {
@@ -9,12 +10,24 @@ interface ExperienceProps{
         currentEmployee: boolean,
         tasks: string   [],
     },
-    handleTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleTextChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    submitExperience: () => void;
 }
 
+export default function ExperienceForms ({handleTextChange, ExperienceInfo, submitExperience}: ExperienceProps): JSX.Element {
+    const [task, setTask] = useState<string>("");
+
+    const handleTaskInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTask(event.target.value);
+    }
+
+    const addTask = () => {
+        ExperienceInfo.tasks.push(task);
+        setTask("");
+    }
 
 
-export default function ExperienceForms ({handleTextChange, ExperienceInfo}: ExperienceProps): JSX.Element {
+
     return <div className="flex flex-col">
         <label>Company</label>
         <input type="text" name="company" value={ExperienceInfo.company} onChange={handleTextChange}></input>
@@ -37,5 +50,12 @@ export default function ExperienceForms ({handleTextChange, ExperienceInfo}: Exp
         </span>
 
         <label>Responsibilities</label>
+        <span>
+        <input type="text" name="task" value={task} onChange={handleTaskInput}></input>
+        <button onClick={addTask}>Add Responsibility</button>
+        </span>
+        {ExperienceInfo.tasks.map((task: string) => <li>{task}</li>)}
+
+        <button onClick={submitExperience}>Submit Experience</button>
     </div>
 }

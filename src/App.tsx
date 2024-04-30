@@ -5,6 +5,7 @@ import EducationForms from "./components/Forms/EducationForms";
 import EducationSection from "./components/Sections/EducationSection";
 import ExperienceForms from "./components/Forms/ExperienceForms";
 import ExperienceSection from "./components/Sections/ExperienceSection";
+import ProjectsForm from "./components/Forms/ProjectsForms";
 
 
 interface HeaderInfo {
@@ -25,18 +26,6 @@ interface EducationInfo {
   expectedGrad: string,
 }
 
-/*
-Experience should have:
-- Company
-- Location
-
-
-- Position
-- Start Date
-- End Date (present or not)
-
-- List of responsibilities at the job
-*/
 interface ExperienceInfo {
   company: string,
   location: string,
@@ -45,6 +34,12 @@ interface ExperienceInfo {
   endMonth: string,
   currentEmployee: boolean,
   tasks: string[],
+}
+
+interface ProjectInfo{
+  title: string,
+  technologies: string,
+  projectPoints: string[],
 }
 
 export default function App() {
@@ -71,8 +66,6 @@ export default function App() {
       expectedGrad: ""
     }
 )
-  //Store Education into array in the event that there are multiple educations
-  const [educationArray, setEducationArray] = useState<EducationInfo[]>([]);
 
   const [experienceInfo, setExperienceInfo] = useState<ExperienceInfo>({
     company: "",
@@ -83,6 +76,20 @@ export default function App() {
     currentEmployee: false,
     tasks: [],
   })
+
+  const [projectInfo, setProjectInfo] = useState<ProjectInfo>({
+    title: "",
+    technologies: "",
+    projectPoints: [],
+  })
+
+
+  //Store Education into array in the event that there are multiple educations
+  const [educationArray, setEducationArray] = useState<EducationInfo[]>([]);
+
+  const [experienceArray, setExperienceArray] = useState<ExperienceInfo[]>([]);
+
+  const [projectArray, setProjectArray] = useState<ProjectInfo[]>([]);
 
 
   /*
@@ -136,42 +143,72 @@ export default function App() {
     setExperienceInfo({...experienceInfo, [name]: value});
   }
 
+  const handleProjectInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target;
+    setProjectInfo({...projectInfo, [name]: value})
+  }
+
+  const addToExperienceArray = () => {
+
+    const emptyExperience = {
+      company: "",
+      location: "",
+      position: "",
+      startMonth: "",
+      endMonth: "",
+      currentEmployee: false,
+      tasks: [],
+  }
+    setExperienceArray([...experienceArray, experienceInfo])
+    setExperienceInfo(emptyExperience);
+  }
+
+  const addToProjectArray = () => {
+    const emptyProject = {
+      title: "",
+      technologies: "",
+      projectPoints: [],
+    }
+    setProjectArray([...projectArray, projectInfo]);
+    setProjectInfo(emptyProject);
+  }
+
+
 
 
   return <div className="w-screen h-screen flex justify-around bg-slate-500 font-serif overflow-scroll">
-    <div className="flex flex-col justify-around"> 
-      <div className="border h-1/4 w-[20rem] flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
+
+    <div className="flex flex-col"> 
+
+      <div className="border h-1/4 w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
         <HeaderForms handleChange={handleHeaderInput} HeaderInfo={headerInfo}></HeaderForms>
       </div>
 
-      <div className="border h-1/2 w-[20rem] flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
+      <div className="border h-1/2 w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
         <EducationForms handleFormChange={handleEducationInput} addEducation={addEducation} EducationInfo={educationInfo}></EducationForms>
-      </div>
-
-      <div className="border h-1/2 w-[20rem] flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
-        <ExperienceForms handleTextChange={handleExperienceInput} ExperienceInfo={experienceInfo}></ExperienceForms>
       </div>
 
     </div>
 
+    <div className="flex flex-col">
+
+      <div className="border h-auto w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
+        <ExperienceForms handleTextChange={handleExperienceInput} ExperienceInfo={experienceInfo} submitExperience={addToExperienceArray}></ExperienceForms>
+      </div>
+
+      <div className="border h-auto w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
+        <ProjectsForm handleInput={handleProjectInput} ProjectInfo={projectInfo} handleSubmission={addToProjectArray}></ProjectsForm>
+      </div>
+      
+    </div>
+
   
 
-    <div className="border w-1/2 h-screen bg-white flex flex-col items-center shadow-md ml-2 mr-2">
-
+    <div className="border w-1/2 h-screen bg-white flex flex-col items-center justify-between shadow-md ml-2 mr-2 mb-5 mt-5">
+      
       <HeaderSection HeaderInfo={headerInfo}></HeaderSection>
-
-
-      <div className="w-full h-1/4">
-        <b className="flex justify-center">Education</b>
-        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700 ml-7 mr-7"></hr>
-        {educationArray.map(education => <EducationSection EducationInfo={education}></EducationSection>)}
-      </div>
-
-      <div className="w-full h-1/4">
-        <b className="flex justify-center">Experience</b>
-        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700 ml-7 mr-7"></hr>
-        <ExperienceSection ExperienceInfo={experienceInfo}></ExperienceSection>
-      </div>
+      {educationArray.map(education => <EducationSection EducationInfo={education}></EducationSection>)}
+      {experienceArray.map(experience => <ExperienceSection ExperienceInfo={experience}></ExperienceSection>)}
 
     </div>
   </div>
