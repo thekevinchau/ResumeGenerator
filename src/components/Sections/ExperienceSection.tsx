@@ -25,7 +25,7 @@ export default function ExperienceSection ({ExperienceInfo}: ExperienceProps): J
     const startYear = parseDate(ExperienceInfo.startMonth).getFullYear();
     const endYear = parseDate(ExperienceInfo.endMonth).getFullYear();
 
-    return <div className="text-xs ml-7 mr-7">
+    return <div className="flex flex-col ml-7 mr-7 text-xs">
         <span className="flex justify-between">
             <b>{ExperienceInfo.company}</b>
             <b>{ExperienceInfo.location}</b>

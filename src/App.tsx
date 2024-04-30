@@ -7,6 +7,7 @@ import ExperienceForms from "./components/Forms/ExperienceForms";
 import ExperienceSection from "./components/Sections/ExperienceSection";
 import ProjectsForm from "./components/Forms/ProjectsForms";
 import ProjectSection from "./components/Sections/ProjectSection";
+import SkillsForms from "./components/Forms/SkillsForms";
 
 
 interface HeaderInfo {
@@ -41,6 +42,12 @@ interface ProjectInfo{
   title: string,
   technologies: string,
   projectPoints: string[],
+}
+
+interface SkillsInfo{
+  progLanguages: string,
+  environments: string,
+  technologies: string,
 }
 
 export default function App() {
@@ -82,6 +89,12 @@ export default function App() {
     title: "",
     technologies: "",
     projectPoints: [],
+  })
+
+  const [skillInfo, setSkillInfo] = useState<SkillsInfo>({
+    progLanguages: "",
+    environments: "",
+    technologies: "",
   })
 
 
@@ -174,6 +187,11 @@ export default function App() {
     setProjectInfo(emptyProject);
   }
 
+  const handleSkillsInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target;
+    setSkillInfo({...skillInfo, [name]: value})
+  }
+
 
 
 
@@ -199,6 +217,10 @@ export default function App() {
 
       <div className="border h-auto w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
         <ProjectsForm handleInput={handleProjectInput} ProjectInfo={projectInfo} handleSubmission={addToProjectArray}></ProjectsForm>
+      </div>
+
+      <div className="border h-auto w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
+        <SkillsForms handleInput={handleSkillsInput} SkillsInfo={skillInfo}></SkillsForms>
       </div>
 
     </div>
