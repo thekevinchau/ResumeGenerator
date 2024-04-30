@@ -6,6 +6,7 @@ import EducationSection from "./components/Sections/EducationSection";
 import ExperienceForms from "./components/Forms/ExperienceForms";
 import ExperienceSection from "./components/Sections/ExperienceSection";
 import ProjectsForm from "./components/Forms/ProjectsForms";
+import ProjectSection from "./components/Sections/ProjectSection";
 
 
 interface HeaderInfo {
@@ -199,7 +200,7 @@ export default function App() {
       <div className="border h-auto w-auto flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
         <ProjectsForm handleInput={handleProjectInput} ProjectInfo={projectInfo} handleSubmission={addToProjectArray}></ProjectsForm>
       </div>
-      
+
     </div>
 
   
@@ -209,6 +210,7 @@ export default function App() {
       <HeaderSection HeaderInfo={headerInfo}></HeaderSection>
       {educationArray.map(education => <EducationSection EducationInfo={education}></EducationSection>)}
       {experienceArray.map(experience => <ExperienceSection ExperienceInfo={experience}></ExperienceSection>)}
+      {projectArray.map(project => <ProjectSection ProjectInfo={project}></ProjectSection>)}
 
     </div>
   </div>
