@@ -26,11 +26,10 @@ export default function ExperienceForms ({handleTextChange, ExperienceInfo}: Exp
         <input type="text" name="position" value={ExperienceInfo.position} onChange={handleTextChange}></input>
 
         <label>Start Month</label>
-        <input type="month" name="startMonth" value={ExperienceInfo.startMonth}></input>
+        <input type="month" name="startMonth" value={ExperienceInfo.startMonth} onChange={handleTextChange}></input>
 
         <label>End Month</label>
-        <input type="month" name="endMonth" value={ExperienceInfo.endMonth}></input>
-
+        <input type="month" name="endMonth" value={ExperienceInfo.endMonth} onChange={handleTextChange}></input>
 
         <span>
         <label>Are you currently an employee?</label>

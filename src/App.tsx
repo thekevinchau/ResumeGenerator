@@ -4,6 +4,7 @@ import HeaderSection from "./components/Sections/HeaderSection";
 import EducationForms from "./components/Forms/EducationForms";
 import EducationSection from "./components/Sections/EducationSection";
 import ExperienceForms from "./components/Forms/ExperienceForms";
+import ExperienceSection from "./components/Sections/ExperienceSection";
 
 
 interface HeaderInfo {
@@ -169,6 +170,7 @@ export default function App() {
       <div className="w-full h-1/4">
         <b className="flex justify-center">Experience</b>
         <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700 ml-7 mr-7"></hr>
+        <ExperienceSection ExperienceInfo={experienceInfo}></ExperienceSection>
       </div>
 
     </div>

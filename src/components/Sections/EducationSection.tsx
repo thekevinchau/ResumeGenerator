@@ -11,7 +11,7 @@ interface EducationProps {
 }
 
 export default function EducationSection({EducationInfo}: EducationProps ): JSX.Element {
-    return <div className="flex flex-col ml-7 mr-7 text-xs">
+    return <div className="flex flex-col ml-7 mr-7 text-xs mb-3">
         <div className="flex flex-col">
             <p className="flex justify-between font-bold">
             <span>{EducationInfo.school}</span>
