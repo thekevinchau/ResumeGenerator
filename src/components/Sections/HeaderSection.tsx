@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 export default function HeaderSection({HeaderInfo}: HeaderProps):JSX.Element {
-    return (<div className="flex flex-col justify-center items-center mt-10 text-xs mb-10">
+    return (<div className="flex flex-col justify-center items-center mt-1 text-xs mb-1 h-1/6">
         <h1 className="font-bold size text-2xl">{HeaderInfo.name}</h1>
         <span className="mt-1">
             <b>Email: </b>{HeaderInfo.email} <b>Cell: </b>{HeaderInfo.cell}

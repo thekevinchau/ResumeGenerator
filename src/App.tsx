@@ -3,6 +3,7 @@ import HeaderForms from "./components/Forms/HeaderForms";
 import HeaderSection from "./components/Sections/HeaderSection";
 import EducationForms from "./components/Forms/EducationForms";
 import EducationSection from "./components/Sections/EducationSection";
+import ExperienceForms from "./components/Forms/ExperienceForms";
 
 
 interface HeaderInfo {
@@ -21,6 +22,28 @@ interface EducationInfo {
   coursework: string,
   location: string,
   expectedGrad: string,
+}
+
+/*
+Experience should have:
+- Company
+- Location
+
+
+- Position
+- Start Date
+- End Date (present or not)
+
+- List of responsibilities at the job
+*/
+interface ExperienceInfo {
+  company: string,
+  location: string,
+  position: string,
+  startMonth: string,
+  endMonth: string,
+  currentEmployee: boolean,
+  tasks: string[],
 }
 
 export default function App() {
@@ -49,6 +72,16 @@ export default function App() {
 )
   //Store Education into array in the event that there are multiple educations
   const [educationArray, setEducationArray] = useState<EducationInfo[]>([]);
+
+  const [experienceInfo, setExperienceInfo] = useState<ExperienceInfo>({
+    company: "",
+    location: "",
+    position: "",
+    startMonth: "",
+    endMonth: "",
+    currentEmployee: false,
+    tasks: [],
+  })
 
 
   /*
@@ -97,20 +130,26 @@ export default function App() {
     setEducationInfo(emptyEducation);
   }
 
-  return <div className="w-screen h-screen flex justify-around bg-slate-500 font-serif">
+  const handleExperienceInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = event.target;
+    setExperienceInfo({...experienceInfo, [name]: value});
+  }
 
+
+
+  return <div className="w-screen h-screen flex justify-around bg-slate-500 font-serif overflow-scroll">
     <div className="flex flex-col justify-around"> 
-
       <div className="border h-1/4 w-[20rem] flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
         <HeaderForms handleChange={handleHeaderInput} HeaderInfo={headerInfo}></HeaderForms>
       </div>
 
-          
       <div className="border h-1/2 w-[20rem] flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
         <EducationForms handleFormChange={handleEducationInput} addEducation={addEducation} EducationInfo={educationInfo}></EducationForms>
       </div>
-      
 
+      <div className="border h-1/2 w-[20rem] flex flex-col align-center justify-center overflow-scroll overflow-x-scroll">
+        <ExperienceForms handleTextChange={handleExperienceInput} ExperienceInfo={experienceInfo}></ExperienceForms>
+      </div>
 
     </div>
 
@@ -121,10 +160,17 @@ export default function App() {
       <HeaderSection HeaderInfo={headerInfo}></HeaderSection>
 
 
-      <div className=" w-full h-1/4">
-      <EducationSection EducationInfo={educationInfo}></EducationSection>
-      {educationArray.map(education => <EducationSection EducationInfo={education}></EducationSection>)}
+      <div className="w-full h-1/4">
+        <b className="flex justify-center">Education</b>
+        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700 ml-7 mr-7"></hr>
+        {educationArray.map(education => <EducationSection EducationInfo={education}></EducationSection>)}
       </div>
+
+      <div className="w-full h-1/4">
+        <b className="flex justify-center">Experience</b>
+        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700 ml-7 mr-7"></hr>
+      </div>
+
     </div>
   </div>
 }

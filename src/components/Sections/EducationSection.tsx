@@ -11,11 +11,8 @@ interface EducationProps {
 }
 
 export default function EducationSection({EducationInfo}: EducationProps ): JSX.Element {
-    return <div className="flex flex-col ml-8 mr-8">
-        <b className="self-center">Education</b>
-        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-        <div className="flex flex-col text-xs">
-
+    return <div className="flex flex-col ml-7 mr-7 text-xs">
+        <div className="flex flex-col">
             <p className="flex justify-between font-bold">
             <span>{EducationInfo.school}</span>
             <span>{EducationInfo.location}</span>
@@ -29,11 +26,11 @@ export default function EducationSection({EducationInfo}: EducationProps ): JSX.
             <p className="mt-1">
             <b>Cumulative GPA: </b>{EducationInfo.gpa}
             </p>
-            <span>{EducationInfo.awards.map((award: string) => <li className="ml-5">{award}</li>)}</span>
+            <span className="mt-1 mb-1">{EducationInfo.awards.map((award: string) => <li className="ml-5">{award}</li>)}</span>
 
 
 
-        <span>{EducationInfo.coursework}</span>
+       <span> <b>Relevant Coursework: </b>{EducationInfo.coursework}</span>
         </div>
     </div>
 }

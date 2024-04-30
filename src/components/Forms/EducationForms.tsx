@@ -26,7 +26,7 @@ export default function EducationForms({EducationInfo, handleFormChange, addEduc
         setAwardInput("");
     }
 
-    return <div className="flex flex-col">
+    return <div className="flex flex-col bg-orange-200">
         <label>School</label>
         <input onChange={handleFormChange} name="school" value={EducationInfo.school}></input>
         <label>School Location</label>
